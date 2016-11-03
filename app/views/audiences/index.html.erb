@@ -1,0 +1,10 @@
+<h1>АУДИТОРИИ ВСЕ ТУТ</h1>
+<% @audiences.each do |audience| %>
+  <p>
+    <b><%= audience.name %></b>
+    <%= link_to 'Изменить', edit_audience_path(audience.id) %>
+    <%= link_to 'Удалить', audience_path(audience), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Добавить аудиторию', new_audience_path %>

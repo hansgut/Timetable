@@ -1,0 +1,11 @@
+<h1>Новая аудитория</h1>
+    <%= form_for @audience do |f| %>
+      <p>
+        <label>Название</label><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @audience.errors.full_messages %>

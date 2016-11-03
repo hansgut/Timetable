@@ -1,0 +1,11 @@
+<h1>Новый преподаватель</h1>
+    <%= form_for @teacher do |f| %>
+      <p>
+        <label>Имя</label><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @teacher.errors.full_messages %>

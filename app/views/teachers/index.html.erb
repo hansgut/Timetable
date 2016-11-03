@@ -1,0 +1,10 @@
+<h1>УЧИТЕЛЯ ВСЕ ТУТ</h1>
+<% @teachers.each do |teacher| %>
+  <p>
+    <b><%= teacher.name %></b>
+    <%= link_to 'Изменить', edit_teacher_path(teacher.id) %>
+    <%= link_to 'Удалить', teacher_path(teacher), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Добавить преподавателя', new_teacher_path %>

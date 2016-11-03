@@ -1,0 +1,11 @@
+<h1>Новая группа</h1>
+    <%= form_for @group do |f| %>
+      <p>
+        <label>Номер</label><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @group.errors.full_messages %>
