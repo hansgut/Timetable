@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :teachers
   resources :groups
   resources :audiences
+  resources :subjects
   root 'teachers#index'
 end

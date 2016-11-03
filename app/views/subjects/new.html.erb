@@ -1,0 +1,11 @@
+<h1>Новый предмет</h1>
+    <%= form_for @subject do |f| %>
+      <p>
+        <label>Название</label><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @subject.errors.full_messages %>

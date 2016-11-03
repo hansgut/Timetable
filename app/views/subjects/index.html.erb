@@ -1,0 +1,10 @@
+<h1>ПРЕДМЕТЫ ВСЕ ТУТ</h1>
+<% @subjects.each do |subject| %>
+  <p>
+    <b><%= subject.name %></b>
+    <%= link_to 'Изменить', edit_subject_path(subject.id) %>
+    <%= link_to 'Удалить', subject_path(subject), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Добавить преподавателя', new_subject_path %>
