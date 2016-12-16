@@ -1,0 +1,14 @@
+<h1>Новое расписание</h1>
+    <%= form_for @table do |f| %>
+      <p>
+        <label>Название</label><br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.collection_select(:group_id, @groups, :id, :name) %>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @table.errors.full_messages %>

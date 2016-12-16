@@ -2,7 +2,7 @@ class SubjectsController < ApplicationController
   before_action :find_subject, only: [:show, :edit, :update, :destroy]
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.all.sort_by { |e| e.name  }
   end
 
   def new
@@ -14,12 +14,12 @@ class SubjectsController < ApplicationController
   end
 
   def create
-      @subject = Subject.new(subject_params)
-      if @subject.save
-        redirect_to subjects_path
-      else
-        render 'new'
-      end
+    @subject = Subject.new(subject_params)
+    if @subject.save
+      redirect_to subjects_path
+    else
+      render 'new'
+    end
   end
 
   def update

@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :find_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    @groups = Group.all.sort_by { |e| e.name  }
   end
 
   def new

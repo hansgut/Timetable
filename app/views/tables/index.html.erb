@@ -1,0 +1,10 @@
+<h1>РАСПИСАНИЯ ВСЕ ТУТ</h1>
+<% @tables.each do |table| %>
+  <p>
+    <b><%= link_to table.name, table_path(table.id) %></b>
+    <%= link_to 'Изменить', edit_table_path(table.id) %>
+    <%= link_to 'Удалить', table_path(table), method: :delete, data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Добавить таблицу', new_table_path %>

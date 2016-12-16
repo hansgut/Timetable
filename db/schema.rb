@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101202246) do
+ActiveRecord::Schema.define(version: 20161113212410) do
 
   create_table "audiences", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20161101202246) do
   create_table "schedules", force: :cascade do |t|
     t.integer  "day"
     t.integer  "period"
+    t.integer  "table_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "teacher_id"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161101202246) do
     t.index ["audience_id"], name: "index_schedules_on_audience_id"
     t.index ["group_id"], name: "index_schedules_on_group_id"
     t.index ["subject_id"], name: "index_schedules_on_subject_id"
+    t.index ["table_id"], name: "index_schedules_on_table_id"
     t.index ["teacher_id"], name: "index_schedules_on_teacher_id"
   end
 
@@ -43,6 +45,14 @@ ActiveRecord::Schema.define(version: 20161101202246) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_tables_on_group_id"
   end
 
   create_table "teachers", force: :cascade do |t|
