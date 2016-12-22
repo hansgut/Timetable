@@ -2,7 +2,7 @@ class SchedulesController < ApplicationController
   before_action :find_schedule, only: [:show, :edit, :update, :destroy]
 
   def index
-    @schedules = Schedule.all;
+    @schedules = Schedule.all
   end
 
   def new

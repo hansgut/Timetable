@@ -2,7 +2,14 @@ class TablesController < ApplicationController
   before_action :find_table, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tables = Table.all
+    temp_tables = []
+    Table.all.each do |e|
+      temp = []
+      temp << e
+      temp << Group.all.find{|g| g.id == e.group_id}.name
+      temp_tables << temp
+    end
+    @tables = temp_tables.sort_by{|e| e[1]}
   end
 
   def new
@@ -12,7 +19,7 @@ class TablesController < ApplicationController
 
   def show
     @table = find_table
-    @elements = Schedule.where(table_id: @table.id).order(period: :asc, day: :desc)
+    @elements = Schedule.where(table_id: @table.id).order(day: :asc, period: :desc)
   end
 
   def create
@@ -39,7 +46,7 @@ class TablesController < ApplicationController
 
   private
   def table_params
-    params.require(:table).permit(:name, :group_id)
+    params.require(:table).permit(:group_id)
   end
 
   def find_table
