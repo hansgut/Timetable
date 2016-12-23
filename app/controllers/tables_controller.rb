@@ -20,6 +20,10 @@ class TablesController < ApplicationController
   def show
     @table = find_table
     @elements = Schedule.where(table_id: @table.id).order(day: :asc, period: :desc)
+    print @elements
+    print @elements
+    print @elements
+    print @elements
   end
 
   def create

@@ -1,6 +1,23 @@
-<h3>Понедельник</h3>
-<% @elements.each do |e| %>
-  <% if e.day == 1 %>
-    <p></p>
-  <% end %>
-<% end %>
+<table class="bordered  centered">
+       <thead>
+         <tr>
+             <th data-field="n"></th>
+             <th data-field="Понедельник">Понедельник</th>
+             <th data-field="Вторник">Вторник</th>
+             <th data-field="Среда">Среда</th>
+             <th data-field="Четверг">Четверг</th>
+             <th data-field="Пятница">Пятница</th>
+             <th data-field="Суббота">Суббота</th>
+         </tr>
+       </thead>
+       <!---<td>Предмет<br>Преподаватель<br>Кабинет<br>Группа</td>--->
+       <tbody>
+         <tr>
+           <% (0...7).each do |i| %>
+           <%   %>
+            <% end %>
+           <td></td>
+
+       </tbody>
+
+     </table>

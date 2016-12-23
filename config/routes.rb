@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :audiences
   resources :subjects
   resources :tables
+  resources :schedules
   root 'teachers#index'
 end

@@ -7,6 +7,13 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    @groups = Group.all.sort_by { |e| e.name  }
+    @teachers = Teacher.all.sort_by { |e| e.name }
+    @audiences = Audience.all.sort_by {|e| e.name }
+    @subjects = Subject.all.sort_by {|e| e.name }
+    @tables = Table.all
+    @days = (1..6).to_a
+    @periods = (1..7).to_a
   end
 
   def create
@@ -33,7 +40,7 @@ class SchedulesController < ApplicationController
 
   private
   def schedule_params
-    params.require(:schedule).permit(:day, :periond, :teacher_id, :group_id, :subject_id, :audience_id)
+    params.require(:schedule).permit(:day, :periond, :teacher_id, :group_id, :subject_id, :audience_id, :table_id)
   end
 
   def find_schedule

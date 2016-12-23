@@ -1,0 +1,28 @@
+<h1>Новое расписание</h1>
+    <%= form_for @schedule do |f| %>
+      <p>
+        <%= f.collection_select(:group_id, @groups, :id, :name) %>
+      </p>
+      <p>
+        <%= f.collection_select(:subject_id, @subjects, :id, :name) %>
+      </p>
+      <p>
+        <%= f.collection_select(:audience_id, @audiences, :id, :name) %>
+      </p>
+      <p>
+        <%= f.collection_select(:teacher_id, @teachers, :id, :name) %>
+      </p>
+      <p>
+        <%= f.collection_select(:table_id, @tables, :id, :id) %>
+      </p>
+      <p>
+        <%= f.collection_select(:day, @days, :to_i, :to_i, include_blank: false )%>
+      </p>
+      <p>
+        <%= f.collection_select(:period, @periods, :to_i, :to_i, include_blank: false )%>
+      </p>
+      <p>
+        <%= f.submit "Добавить" %>
+      </p>
+    <% end %>
+<%= @schedule.errors.full_messages %>
