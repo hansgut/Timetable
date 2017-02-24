@@ -54,10 +54,10 @@
                                   <%= f.collection_select(:teacher_id, @teachers, :id, :name) %>
                                 </p>
                                 <p>
-                                  <%= f.text_field :day, value: j %>
+                                  <%= f.hidden_field :day, value: j, readonly: true %>
                                 </p>
                                 <p>
-                                  <%= f.text_field :period, value: i+1 %>
+                                  <%= f.hidden_field :period, value: i+1, readonly: true %>
                                 </p>
                                 <p>
                                   <%= f.submit "Добавить" %>
