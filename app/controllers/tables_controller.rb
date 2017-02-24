@@ -18,12 +18,13 @@ class TablesController < ApplicationController
   end
 
   def show
+    @count = 1
     @table = find_table
-    @elements = Schedule.where(table_id: @table.id).order(day: :asc, period: :desc)
-    print @elements
-    print @elements
-    print @elements
-    print @elements
+    @group = @table.group_id
+    @subjects = Subject.all.sort_by { |e| e.name  }
+    @audiences = Audience.all.sort_by { |e| e.name  }
+    @teachers = Teacher.all.sort_by { |e| e.name  }
+    @schedules = Schedule.where(table_id: @table)
   end
 
   def create
@@ -51,6 +52,10 @@ class TablesController < ApplicationController
   private
   def table_params
     params.require(:table).permit(:group_id)
+  end
+
+  def schedule_params
+    params.require(:schedule).permit(:day, :periond, 0, 0, 0, 0, 0)
   end
 
   def find_table

@@ -1,27 +1,13 @@
 class SchedulesController < ApplicationController
   before_action :find_schedule, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @schedules = Schedule.all
-  end
-
-  def new
-    @schedule = Schedule.new
-    @groups = Group.all.sort_by { |e| e.name  }
-    @teachers = Teacher.all.sort_by { |e| e.name }
-    @audiences = Audience.all.sort_by {|e| e.name }
-    @subjects = Subject.all.sort_by {|e| e.name }
-    @tables = Table.all
-    @days = (1..6).to_a
-    @periods = (1..7).to_a
-  end
-
   def create
-      @schedule = Schedule.new(schedule_params)
+      @table = Table.find(params[:table_id])
+      @schedule = Schedule.create(schedule_params)
+      @schedule.table_id = @table.id
+
       if @schedule.save
-        redirect_to schedules_path
-      else
-        render 'new'
+        redirect_to table_path(@table)
       end
   end
 
@@ -34,13 +20,15 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+    @table = Table.find params[:table_id]
+    @schedule = @table.schedules.find params[:id]
     @schedule.destroy
-    redirect_to schedules_path
+    redirect_to post_path(@table)
   end
 
   private
   def schedule_params
-    params.require(:schedule).permit(:day, :periond, :teacher_id, :group_id, :subject_id, :audience_id, :table_id)
+    params.require(:schedule).permit(:day, :period, :teacher_id, :group_id, :subject_id, :audience_id, :table_id)
   end
 
   def find_schedule

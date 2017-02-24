@@ -12,12 +12,67 @@
        </thead>
        <!---<td>Предмет<br>Преподаватель<br>Кабинет<br>Группа</td>--->
        <tbody>
-         <tr>
-           <% (0...7).each do |i| %>
-           <%   %>
-            <% end %>
-           <td></td>
-
+         <% (0...7).each do |i| %>
+           <tr>
+             <% (0...7).each do |j| %>
+                <% if j == 0 %>
+                  <td><%=i + j + 1 %></td>
+                <% else %>
+                <% finded_schedule = @schedules.find_all{|schedule| schedule.day == j} %>
+                <% finded_schedule = finded_schedule.find_all{|schedule| schedule.period == i+1} %>
+                <% if finded_schedule != [] %>
+                <td>
+                  <% element = finded_schedule[0] %>
+                  <%= Subject.find(element.subject_id).name %><br>
+                  <%= Group.find(element.group_id).name %><br>
+                  <%= Teacher.find(element.teacher_id).name %><br>
+                  <%= Audience.find(element.audience_id).name %>
+                </td>
+                    <% else %>
+                    <td><div class="modal">
+                      <label title="Добавить пару" class="btn" for="modal-<%= @count %>">Добавить</label>
+                        <input class="modal-open" id="modal-<%= @count %>" type="checkbox" hidden>
+                        <div class="modal-wrap" aria-hidden="true" role="dialog">
+                          <label class="modal-overlay" for="modal-<%= @count %>"></label>
+                          <div class="modal-dialog">
+                            <div class="modal-header">
+                              <h2>Добавить пару</h2>
+                              <label class="btn-close" for="modal-<%= @count %>" aria-hidden="true">×</label>
+                            </div>
+                            <div class="modal-body">
+                                <%= form_for([@table, @table.schedules.build]) do |f| %>
+                                <p>
+                                  <%= f.hidden_field :group_id, value: @group %>
+                                </p>
+                                <p>
+                                  <%= f.collection_select(:subject_id, @subjects, :id, :name) %>
+                                </p>
+                                <p>
+                                  <%= f.collection_select(:audience_id, @audiences, :id, :name) %>
+                                </p>
+                                <p>
+                                  <%= f.collection_select(:teacher_id, @teachers, :id, :name) %>
+                                </p>
+                                <p>
+                                  <%= f.text_field :day, value: j %>
+                                </p>
+                                <p>
+                                  <%= f.text_field :period, value: i+1 %>
+                                </p>
+                                <p>
+                                  <%= f.submit "Добавить" %>
+                                </p>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div></td>
+                    <% end %>
+                <% end %>
+                <% @count += 1 %>
+             <% end %>
+           </tr>
+         <% end %>
        </tbody>
 
      </table>
