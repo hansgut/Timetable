@@ -2,7 +2,6 @@
 <% @tables.each do |table| %>
   <p>
     <b><%= link_to "Расписание для "+ table[1], table_path(table[0].id) %></b>
-    <%= link_to 'Изменить', edit_table_path(table[0].id) %>
     <%= link_to 'Удалить', table_path(table[0]), method: :delete, data: { confirm: 'Вы уверены?' } %>
   </p>
 <% end %>

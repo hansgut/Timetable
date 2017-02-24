@@ -27,6 +27,7 @@
                   <%= Group.find(element.group_id).name %><br>
                   <%= Teacher.find(element.teacher_id).name %><br>
                   <%= Audience.find(element.audience_id).name %>
+                  <%= link_to 'Удалить', [element.table, element], method: :delete, data: { comfirm: 'Вы уверены?' }%>
                 </td>
                     <% else %>
                     <td><div class="modal">

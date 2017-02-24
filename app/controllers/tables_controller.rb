@@ -36,14 +36,6 @@ class TablesController < ApplicationController
       end
   end
 
-  def update
-    if @table.update(table_params)
-      redirect_to tables_path
-    else
-      render 'edit'
-    end
-  end
-
   def destroy
     @table.destroy
     redirect_to tables_path

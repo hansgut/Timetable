@@ -23,7 +23,7 @@ class SchedulesController < ApplicationController
     @table = Table.find params[:table_id]
     @schedule = @table.schedules.find params[:id]
     @schedule.destroy
-    redirect_to post_path(@table)
+    redirect_to table_path(@table)
   end
 
   private
