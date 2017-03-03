@@ -1,4 +1,4 @@
-<h1>РАСПИСАНИЯ ВСЕ ТУТ</h1>
+
 <% @tables.each do |table| %>
   <p>
     <b><%= link_to "Расписание для "+ table[1], table_path(table[0].id) %></b>

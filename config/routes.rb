@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :tables do
     resources :schedules
   end
-  root 'table#index'
+  root 'tables#index'
 end

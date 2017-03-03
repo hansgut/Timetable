@@ -3,12 +3,60 @@
   <head>
     <title>Timetable</title>
     <%= csrf_meta_tags %>
-
+    <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+   <div class="nav-wrapper">
+     <a href="/" class="brand-logo center">Расписание</a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down">
+       <li>
+         <%=link_to 'Расписания', tables_path %>
+       </li>
+       <li><%=link_to 'Преподаватели', teachers_path %></li>
+       <li><%=link_to 'Аудитории', audiences_path %></li>
+       <li><%=link_to 'Группы', groups_path %></li>
+     </ul>
+   </div>
+ </nav>
+ <div class="container">
+    <div class="fixed-action-btn horizontal click-to-toggle">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul>
+      <li>
+        <%=link_to(new_teacher_path) do %>
+          <b class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить преподавателя"><i class="material-icons">perm_identity</i></b>
+        <% end %>
+      </li>
+      <li>
+        <%=link_to(new_subject_path) do %>
+          <b class="btn-floating yellow darken-2 tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить предмет"><i class="material-icons">book</i></b>
+        <% end %>
+      </li>
+      <li>
+        <%=link_to(new_audience_path) do %>
+          <b class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить аудиторию"><i class="material-icons">weekend</i></b>
+        <% end %>
+      </li>
+      <li>
+        <%=link_to(new_group_path) do %>
+          <b class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить группу"><i class="material-icons">supervisor_account</i></b>
+        <% end %>
+      </li>
+      <li>
+        <%=link_to(new_table_path) do %>
+          <b class="btn-floating deep-purple tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить расписание"><i class="material-icons">library_add</i></b>
+        <% end %>
+      </li>
+    </ul>
+  </div>
     <%= yield %>
+</div>
   </body>
 </html>

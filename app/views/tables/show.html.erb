@@ -1,3 +1,4 @@
+
 <table class="bordered  centered">
        <thead>
          <tr>
@@ -30,44 +31,49 @@
                   <%= link_to 'Удалить', [element.table, element], method: :delete, data: { comfirm: 'Вы уверены?' }%>
                 </td>
                     <% else %>
-                    <td><div class="modal">
-                      <label title="Добавить пару" class="btn" for="modal-<%= @count %>">Добавить</label>
-                        <input class="modal-open" id="modal-<%= @count %>" type="checkbox" hidden>
-                        <div class="modal-wrap" aria-hidden="true" role="dialog">
-                          <label class="modal-overlay" for="modal-<%= @count %>"></label>
-                          <div class="modal-dialog">
-                            <div class="modal-header">
-                              <h2>Добавить пару</h2>
-                              <label class="btn-close" for="modal-<%= @count %>" aria-hidden="true">×</label>
-                            </div>
-                            <div class="modal-body">
-                                <%= form_for([@table, @table.schedules.build]) do |f| %>
-                                <p>
-                                  <%= f.hidden_field :group_id, value: @group %>
-                                </p>
-                                <p>
-                                  <%= f.collection_select(:subject_id, @subjects, :id, :name) %>
-                                </p>
-                                <p>
-                                  <%= f.collection_select(:audience_id, @audiences, :id, :name) %>
-                                </p>
-                                <p>
-                                  <%= f.collection_select(:teacher_id, @teachers, :id, :name) %>
-                                </p>
-                                <p>
-                                  <%= f.hidden_field :day, value: j, readonly: true %>
-                                </p>
-                                <p>
-                                  <%= f.hidden_field :period, value: i+1, readonly: true %>
-                                </p>
-                                <p>
-                                  <%= f.submit "Добавить" %>
-                                </p>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                      </div></td>
+                    <td>
+                      <div class="modal-timetable">
+                                            <label title="Добавить пару" class="waves-effect waves-light btn-large" for="modal-<%= @count %>">Добавить</label>
+                                              <input class="modal-timetable-open" id="modal-<%= @count %>" type="checkbox" hidden>
+                                              <div class="modal-timetable-wrap" aria-hidden="true" role="dialog">
+                                                <label class="modal-timetable-overlay" for="modal-<%= @count %>"></label>
+                                                <div class="modal-timetable-dialog">
+                                                  <div class="modal-timetable-header">
+                                                    <h2>Добавить пару</h2>
+                                                    <label class="btn-timetable-close" for="modal-<%= @count %>" aria-hidden="true">×</label>
+                                                  </div>
+                                                  <div class="modal-timetable-body input-field">
+                                                      <%= form_for([@table, @table.schedules.build]) do |f| %>
+                                                      <p>
+                                                        <%= f.hidden_field :group_id, value: @group %>
+                                                      </p>
+                                                      <p>
+                                                        <%= f.collection_select(:subject_id, @subjects, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                                      </p>
+                                                      <br>
+                                                      <p>
+                                                        <%= f.collection_select(:audience_id, @audiences, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                                      </p>
+                                                      <br>
+                                                      <p>
+                                                        <%= f.collection_select(:teacher_id, @teachers, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                                      </p>
+                                                      <p>
+                                                        <%= f.hidden_field :day, value: j, readonly: true %>
+                                                      </p>
+                                                      <p>
+                                                        <%= f.hidden_field :period, value: i+1, readonly: true %>
+                                                      </p>
+                                                      <br>
+                                                      <p>
+                                                        <%= f.submit "Добавить", {:class=>'btn waves-effect waves-light'} %>
+                                                      </p>
+                                                    <% end %>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                    </td>
                     <% end %>
                 <% end %>
                 <% @count += 1 %>
