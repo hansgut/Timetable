@@ -1,11 +1,11 @@
-<h1>Новый предмет</h1>
-    <%= form_for @subject do |f| %>
-      <p>
-        <label>Название</label><br>
-        <%= f.text_field :name %>
-      </p>
-      <p>
-        <%= f.submit "Добавить" %>
-      </p>
-    <% end %>
-<%= @subject.errors.full_messages %>
+<h3>Новый предмет</h3>
+<%= if @error != "" then @error else "" end%>
+<%= form_for @subject do |f| %>
+  <p>
+    <label>Название</label><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit "Добавить", {:class=>'btn waves-effect waves-light'} %>
+  </p>
+<% end %>

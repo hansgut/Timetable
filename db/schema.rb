@@ -16,20 +16,20 @@ ActiveRecord::Schema.define(version: 20161113212410) do
   enable_extension "plpgsql"
 
   create_table "audiences", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.integer  "day"
-    t.integer  "period"
+    t.integer  "day",         null: false
+    t.integer  "period",      null: false
     t.integer  "table_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161113212410) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20161113212410) do
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -14,12 +14,24 @@ class AudiencesController < ApplicationController
   end
 
   def create
-      @audience = Audience.new(audience_params)
+    @error = ""
+    @audience = Audience.new(audience_params)
+    @try = Audience.find_by name: @audience.name
+    if @audience.name != ""
+      if @try != nil
+        @error = "Такая аудитория уже есть!"
+        render 'new'
+        return
+      end
       if @audience.save
         redirect_to audiences_path
       else
         render 'new'
       end
+    else
+      @error = "Поле не может быть пустым!"
+      render 'new'
+    end
   end
 
   def update

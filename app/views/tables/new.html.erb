@@ -1,4 +1,4 @@
-<h1>Новое расписание</h1>
+<h3>Новое расписание</h3>
     <%= form_for @table do |f| %>
       <p>
         <%= f.collection_select(:group_id, @groups, :id, :name,{},{:class=>'btn waves-effect waves-light'}) %>

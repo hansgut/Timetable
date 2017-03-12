@@ -14,10 +14,22 @@ class SubjectsController < ApplicationController
   end
 
   def create
+    @error = ""
     @subject = Subject.new(subject_params)
-    if @subject.save
-      redirect_to subjects_path
+    @try = Subject.find_by name: @subject.name
+    if @subject.name != ""
+      if @try != nil
+        @error = "Такой предмет уже есть!"
+        render 'new'
+        return
+      end
+      if @subject.save
+        redirect_to subjects_path
+      else
+        render 'new'
+      end
     else
+      @error = "Поле не может быть пустым!"
       render 'new'
     end
   end

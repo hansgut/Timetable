@@ -14,12 +14,24 @@ class GroupsController < ApplicationController
   end
 
   def create
-      @group = Group.new(group_params)
+    @error = ""
+    @group = Group.new(group_params)
+    @try = Group.find_by name: @group.name
+    if @group.name != ""
+      if @try != nil
+        @error = "Такая группа уже есть!"
+        render 'new'
+        return
+      end
       if @group.save
         redirect_to groups_path
       else
         render 'new'
       end
+    else
+      @error = "Поле не может быть пустым!"
+      render 'new'
+    end
   end
 
   def update

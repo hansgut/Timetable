@@ -10,54 +10,63 @@
   </head>
 
   <body>
-    <nav>
-   <div class="nav-wrapper">
-     <a href="/" class="brand-logo center">Расписание</a>
-     <ul class="right">
-       <li>
-         <%=link_to 'Расписания', tables_path %>
-       </li>
+    <nav class="teal">
+   <div class="nav-wrapper container">
+     <a href="/" class="brand-logo">Расписание</a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+     <ul class="right hide-on-med-and-down">
+       <li><%=link_to 'Расписания', tables_path %></li>
        <li><%=link_to 'Преподаватели', teachers_path %></li>
        <li><%=link_to 'Аудитории', audiences_path %></li>
        <li><%=link_to 'Группы', groups_path %></li>
        <li><%=link_to 'Предметы', subjects_path %></li>
      </ul>
    </div>
+   <ul class="side-nav" id="mobile-demo">
+     <li><%=link_to 'Расписания', tables_path %></li>
+     <li><%=link_to 'Преподаватели', teachers_path %></li>
+     <li><%=link_to 'Аудитории', audiences_path %></li>
+     <li><%=link_to 'Группы', groups_path %></li>
+     <li><%=link_to 'Предметы', subjects_path %></li>
+    </ul>
  </nav>
  <div class="container">
-    <div class="fixed-action-btn horizontal click-to-toggle">
-    <a class="btn-floating btn-large red">
-      <i class="material-icons">menu</i>
-    </a>
-    <ul>
-      <li>
-        <%=link_to(new_teacher_path) do %>
-          <b class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить преподавателя"><i class="material-icons">perm_identity</i></b>
-        <% end %>
-      </li>
-      <li>
-        <%=link_to(new_subject_path) do %>
-          <b class="btn-floating yellow darken-2 tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить предмет"><i class="material-icons">book</i></b>
-        <% end %>
-      </li>
-      <li>
-        <%=link_to(new_audience_path) do %>
-          <b class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить аудиторию"><i class="material-icons">weekend</i></b>
-        <% end %>
-      </li>
-      <li>
-        <%=link_to(new_group_path) do %>
-          <b class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить группу"><i class="material-icons">supervisor_account</i></b>
-        <% end %>
-      </li>
-      <li>
-        <%=link_to(new_table_path) do %>
-          <b class="btn-floating deep-purple tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить расписание"><i class="material-icons">library_add</i></b>
-        <% end %>
-      </li>
-    </ul>
-  </div>
+
+  <div class="row">
     <%= yield %>
+  </div>
+</div>
+<div class="fixed-action-btn horizontal click-to-toggle">
+<a class="btn-floating btn-large red">
+  <i class="material-icons">menu</i>
+</a>
+<ul>
+  <li>
+    <%=link_to(new_teacher_path) do %>
+      <b class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить преподавателя"><i class="material-icons">perm_identity</i></b>
+    <% end %>
+  </li>
+  <li>
+    <%=link_to(new_subject_path) do %>
+      <b class="btn-floating yellow darken-2 tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить предмет"><i class="material-icons">book</i></b>
+    <% end %>
+  </li>
+  <li>
+    <%=link_to(new_audience_path) do %>
+      <b class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить аудиторию"><i class="material-icons">weekend</i></b>
+    <% end %>
+  </li>
+  <li>
+    <%=link_to(new_group_path) do %>
+      <b class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить группу"><i class="material-icons">supervisor_account</i></b>
+    <% end %>
+  </li>
+  <li>
+    <%=link_to(new_table_path) do %>
+      <b class="btn-floating deep-purple tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить расписание"><i class="material-icons">library_add</i></b>
+    <% end %>
+  </li>
+</ul>
 </div>
   </body>
 </html>

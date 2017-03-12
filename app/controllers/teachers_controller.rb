@@ -14,10 +14,22 @@ class TeachersController < ApplicationController
   end
 
   def create
+      @error = ""
       @teacher = Teacher.new(teacher_params)
-      if @teacher.save
-        redirect_to teachers_path
+      @try = Teacher.find_by name: @teacher.name
+      if @teacher.name != ""
+        if @try != nil
+          @error = "Такой преподаватель уже есть!"
+          render 'new'
+          return
+        end
+        if @teacher.save
+          redirect_to teachers_path
+        else
+          render 'new'
+        end
       else
+        @error = "Поле не может быть пустым!"
         render 'new'
       end
   end
