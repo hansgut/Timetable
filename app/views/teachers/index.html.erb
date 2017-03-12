@@ -7,12 +7,13 @@
             <%= teacher.name %>
             <%= link_to teacher_path(teacher), method: :delete, data: { confirm: 'Вы уверены?' } do %>
               <b class="secondary-content">
-                <i class="material-icons">delete_sweep</i>
+                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Удалить">delete_sweep</i>
               </b>
             <% end %>
+
             <%= link_to edit_teacher_path(teacher.id) do %>
               <b class="secondary-content">
-                <i class="material-icons">edit</i>
+                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Изменить">edit</i>
               </b>
             <% end %>
           </div>
