@@ -49,34 +49,34 @@
     <%= yield %>
   </div>
     <% if current_user.try(:admin?) %>
-    <div class="fixed-action-btn horizontal click-to-toggle">
+    <div class="fixed-action-btn click-to-toggle">
     <a class="btn-floating btn-large red">
       <i class="material-icons">menu</i>
     </a>
     <ul>
       <li>
         <%=link_to(new_teacher_path) do %>
-          <b class="btn-floating red tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить преподавателя"><i class="material-icons">perm_identity</i></b>
+          <b class="btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Добавить преподавателя"><i class="material-icons">perm_identity</i></b>
         <% end %>
       </li>
       <li>
         <%=link_to(new_subject_path) do %>
-          <b class="btn-floating yellow darken-2 tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить предмет"><i class="material-icons">book</i></b>
+          <b class="btn-floating yellow darken-2 tooltipped" data-position="left" data-delay="50" data-tooltip="Добавить предмет"><i class="material-icons">book</i></b>
         <% end %>
       </li>
       <li>
         <%=link_to(new_audience_path) do %>
-          <b class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить аудиторию"><i class="material-icons">weekend</i></b>
+          <b class="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Добавить аудиторию"><i class="material-icons">weekend</i></b>
         <% end %>
       </li>
       <li>
         <%=link_to(new_group_path) do %>
-          <b class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить группу"><i class="material-icons">supervisor_account</i></b>
+          <b class="btn-floating blue tooltipped" data-position="left" data-delay="50" data-tooltip="Добавить группу"><i class="material-icons">supervisor_account</i></b>
         <% end %>
       </li>
       <li>
         <%=link_to(new_table_path) do %>
-          <b class="btn-floating deep-purple tooltipped" data-position="top" data-delay="50" data-tooltip="Добавить расписание"><i class="material-icons">library_add</i></b>
+          <b class="btn-floating deep-purple tooltipped" data-position="left" data-delay="50" data-tooltip="Добавить расписание"><i class="material-icons">library_add</i></b>
         <% end %>
       </li>
     </ul>
