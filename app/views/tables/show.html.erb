@@ -11,7 +11,6 @@
              <th data-field="Суббота">Суббота</th>
          </tr>
        </thead>
-       <!---<td>Предмет<br>Преподаватель<br>Кабинет<br>Группа</td>--->
        <tbody>
          <% (0...7).each do |i| %>
            <tr>
@@ -48,15 +47,15 @@
                                     <%= f.hidden_field :group_id, value: @group %>
                                   </p>
                                   <p>
-                                    <%= f.collection_select(:subject_id, @subjects, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                    <%= f.collection_select(:subject_id, @subjects, :id, :name) %>
                                   </p>
                                   <br>
                                   <p>
-                                    <%= f.collection_select(:audience_id, @audiences, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                    <%= f.collection_select(:audience_id, @audiences, :id, :name) %>
                                   </p>
                                   <br>
                                   <p>
-                                    <%= f.collection_select(:teacher_id, @teachers, :id, :name, {}, {:class=>'btn waves-effect waves-light'}) %>
+                                    <%= f.collection_select(:teacher_id, @teachers, :id, :name) %>
                                   </p>
                                   <p>
                                     <%= f.hidden_field :day, value: j, readonly: true %>

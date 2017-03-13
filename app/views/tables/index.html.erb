@@ -1,9 +1,7 @@
-
-<% @tables.each do |table| %>
-  <p>
-    <b><%= link_to "Расписание для "+ table[1], table_path(table[0].id) %></b>
-    <%= link_to 'Удалить', table_path(table[0]), method: :delete, data: { confirm: 'Вы уверены?' } %>
-  </p>
-<% end %>
-<br>
-<%= link_to 'Добавить таблицу', new_table_path %>
+<div class="col l7 push-l2 s12">
+  <div class="collection">
+    <% @tables.each do |table| %>
+      <%= link_to "Расписание для "+ table[1], table_path(table[0].id), class: 'collection-item' %>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,23 @@
-<h1>ПРЕДМЕТЫ ВСЕ ТУТ</h1>
-<% @subjects.each do |subject| %>
-  <p>
-    <b><%= subject.name %></b>
-    <%= link_to 'Изменить', edit_subject_path(subject.id) %>
-    <%= link_to 'Удалить', subject_path(subject), method: :delete, data: { confirm: 'Вы уверены?' } %>
-  </p>
-<% end %>
-<br>
-<%= link_to 'Добавить предмет', new_subject_path %>
+<div class="col l7 push-l2 s12">
+  <ul class="collection with-header">
+      <li class="collection-header"><h4>Предметы</h4></li>
+      <% @subjects.each do |subject| %>
+        <li class="collection-item">
+          <div>
+            <%= subject.name %>
+            <%= link_to subject_path(subject), method: :delete, data: { confirm: 'Вы уверены?' } do %>
+              <b class="secondary-content">
+                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Удалить">delete_sweep</i>
+              </b>
+            <% end %>
+
+            <%= link_to edit_subject_path(subject.id) do %>
+              <b class="secondary-content">
+                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Изменить">edit</i>
+              </b>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+  </ul>
+</div>

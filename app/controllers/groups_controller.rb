@@ -43,6 +43,10 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @table = Table.find_by group_id: @group.id
+    if @table != nil
+      @table.destroy
+    end
     @group.destroy
     redirect_to groups_path
   end

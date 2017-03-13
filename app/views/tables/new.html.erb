@@ -1,7 +1,7 @@
 <h3>Новое расписание</h3>
     <%= form_for @table do |f| %>
       <p>
-        <%= f.collection_select(:group_id, @groups, :id, :name,{},{:class=>'btn waves-effect waves-light'}) %>
+        <%= f.collection_select(:group_id, @groups, :id, :name) %>
       </p>
       <p>
         <%= f.submit "Добавить", {:class=>'btn waves-effect waves-light'} %>

@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
   before_action :find_teacher, only: [:show, :edit, :update, :destroy]
 
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.all.sort_by { |e| e.name  }
   end
 
   def new

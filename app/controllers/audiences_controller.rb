@@ -2,7 +2,7 @@ class AudiencesController < ApplicationController
   before_action :find_audience, only: [:show, :edit, :update, :destroy]
 
   def index
-    @audiences = Audience.all
+    @audiences = Audience.all.sort_by { |e| e.name  }
   end
 
   def new
