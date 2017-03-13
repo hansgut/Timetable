@@ -22,3 +22,7 @@ $(document).ready(function(){
 $(document).ready(function() {
   $('select').material_select();
 });
+
+function MakeToast(text){
+  Materialize.toast(text, 4000);
+}

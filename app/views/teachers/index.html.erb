@@ -5,16 +5,18 @@
         <li class="collection-item">
           <div>
             <%= teacher.name %>
-            <%= link_to teacher_path(teacher), method: :delete, data: { confirm: 'Вы уверены?' } do %>
-              <b class="secondary-content">
-                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Удалить">delete_sweep</i>
-              </b>
-            <% end %>
+            <% if current_user.try(:admin?) %>
+              <%= link_to teacher_path(teacher), method: :delete, data: { confirm: 'Вы уверены?' } do %>
+                <b class="secondary-content">
+                  <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Удалить">delete_sweep</i>
+                </b>
+              <% end %>
 
-            <%= link_to edit_teacher_path(teacher.id) do %>
-              <b class="secondary-content">
-                <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Изменить">edit</i>
-              </b>
+              <%= link_to edit_teacher_path(teacher.id) do %>
+                <b class="secondary-content">
+                  <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Изменить">edit</i>
+                </b>
+              <% end %>
             <% end %>
           </div>
         </li>

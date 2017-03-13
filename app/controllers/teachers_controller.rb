@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :find_teacher, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index]
   def index
     @teachers = Teacher.all.sort_by { |e| e.name  }
   end

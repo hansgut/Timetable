@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :find_schedule, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   def create
       @table = Table.find(params[:table_id])
       @schedule = Schedule.create(schedule_params)

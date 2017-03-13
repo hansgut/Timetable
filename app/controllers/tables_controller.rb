@@ -1,6 +1,6 @@
 class TablesController < ApplicationController
   before_action :find_table, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     temp_tables = []
     Table.all.each do |e|
@@ -37,7 +37,7 @@ class TablesController < ApplicationController
   end
 
   def destroy
-    
+
     @table.destroy
     redirect_to tables_path
   end

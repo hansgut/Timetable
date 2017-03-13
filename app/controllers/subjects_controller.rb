@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :find_subject, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index]
   def index
     @subjects = Subject.all.sort_by { |e| e.name  }
   end
