@@ -1,4 +1,4 @@
-
+<div class="container" style="overflow: auto;">
 <table class="bordered  centered">
        <thead>
          <tr>
@@ -27,18 +27,21 @@
                   <%= Group.find(element.group_id).name %><br>
                   <%= Teacher.find(element.teacher_id).name %><br>
                   <%= Audience.find(element.audience_id).name %>
+                  <% if current_user.try(:admin?) %>
                   <%= link_to 'Удалить', [element.table, element], method: :delete, data: { comfirm: 'Вы уверены?' }%>
+                  <% end %>
                 </td>
                     <% else %>
                     <td>
-                      <div class="modal-timetable">
-                        <label title="Добавить пару" class="waves-effect waves-light btn-large" for="modal-<%= @count %>">Добавить</label>
+                      <% if current_user.try('admin?') %>
+                        <div class="modal-timetable">
+                          <label title="Добавить пару" class="waves-effect waves-light btn-large" for="modal-<%= @count %>">Добавить</label>
                           <input class="modal-timetable-open" id="modal-<%= @count %>" type="checkbox" hidden>
                           <div class="modal-timetable-wrap" aria-hidden="true" role="dialog">
                             <label class="modal-timetable-overlay" for="modal-<%= @count %>"></label>
                             <div class="modal-timetable-dialog">
                               <div class="modal-timetable-header">
-                                <h2>Добавить пару</h2>
+        <div class="container" style="overflow: auto;">                        <h2>Добавить пару</h2>
                                 <label class="btn-timetable-close" for="modal-<%= @count %>" aria-hidden="true">×</label>
                               </div>
                               <div class="modal-timetable-body input-field">
@@ -72,6 +75,9 @@
                             </div>
                           </div>
                         </div>
+                      <% else %>
+                      <br><br><br><br>
+                      <% end %>
                     </td>
                     <% end %>
                 <% end %>
@@ -82,3 +88,4 @@
        </tbody>
 
      </table>
+</div>
