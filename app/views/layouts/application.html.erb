@@ -24,6 +24,10 @@
    </div>
  </nav>
  <div class="container">
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <% if current_user.try(:admin?) %>
     <div class="fixed-action-btn horizontal click-to-toggle">
     <a class="btn-floating btn-large red">
       <i class="material-icons">menu</i>
@@ -56,7 +60,7 @@
       </li>
     </ul>
   </div>
-    <%= yield %>
+  <% end %>
 </div>
   </body>
 </html>
