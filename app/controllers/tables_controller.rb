@@ -20,11 +20,13 @@ class TablesController < ApplicationController
   def show
     @count = 1
     @table = find_table
-    @group = @table.group_id
-    @subjects = Subject.all.sort_by { |e| e.name  }
-    @audiences = Audience.all.sort_by { |e| e.name  }
-    @teachers = Teacher.all.sort_by { |e| e.name  }
     @schedules = Schedule.where(table_id: @table)
+    if current_user.try(:admin?)
+      @group = @table.group_id
+      @subjects = Subject.all.sort_by { |e| e.name  }
+      @audiences = Audience.all.sort_by { |e| e.name  }
+      @teachers = Teacher.all.sort_by { |e| e.name  }
+    end
   end
 
   def create
