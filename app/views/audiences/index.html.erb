@@ -4,7 +4,9 @@
       <% @audiences.each do |audience| %>
         <li class="collection-item">
           <div>
-            <%= audience.name %>
+            <%= link_to audience_path(audience) do %>
+              <%= audience.name %>
+            <% end %>
             <% if current_user.try(:admin?) %>
               <%= link_to audience_path(audience), method: :delete, data: { confirm: 'Вы уверены?' } do %>
                 <b class="secondary-content">

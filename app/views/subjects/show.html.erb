@@ -1,0 +1,47 @@
+<div style="overflow: auto;">
+<table class="bordered  centered">
+       <thead>
+         <tr>
+             <th data-field="n"></th>
+             <th data-field="Понедельник">Понедельник</th>
+             <th data-field="Вторник">Вторник</th>
+             <th data-field="Среда">Среда</th>
+             <th data-field="Четверг">Четверг</th>
+             <th data-field="Пятница">Пятница</th>
+             <th data-field="Суббота">Суббота</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% (0...7).each do |i| %>
+           <tr>
+             <% (0...7).each do |j| %>
+                <% if j == 0 %>
+                  <td><%=i + j + 1 %></td>
+                <% else %>
+                <% finded_schedule = @schedules.find_all{|schedule| schedule.day == j} %>
+                <% finded_schedule = finded_schedule.find_all{|schedule| schedule.period == i+1} %>
+                <% if finded_schedule != [] %>
+                <td>
+                  <% element = finded_schedule[0] %>
+                  <%= Subject.find(element.subject_id).name %><br>
+                  <%= Group.find(element.group_id).name %><br>
+                  <%= Teacher.find(element.teacher_id).name %><br>
+                  <%= Audience.find(element.audience_id).name %>
+                  <% if current_user.try(:admin?) %>
+                  <%= link_to 'Удалить', [element.table, element], method: :delete, data: { comfirm: 'Вы уверены?' }%>
+                  <% end %>
+                </td>
+                    <% else %>
+                    <td>
+                      <br><br><br><br>
+                    </td>
+                    <% end %>
+                <% end %>
+                <% @count += 1 %>
+             <% end %>
+           </tr>
+         <% end %>
+       </tbody>
+
+     </table>
+</div>

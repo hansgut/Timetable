@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   before_action :find_teacher, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @teachers = Teacher.all.sort_by { |e| e.name  }
   end
@@ -11,6 +11,11 @@ class TeachersController < ApplicationController
 
   def edit
 
+  end
+
+  def show
+    @count = 1
+    @schedules = Schedule.where(teacher_id: @teacher.id)
   end
 
   def create

@@ -13,6 +13,11 @@ class SubjectsController < ApplicationController
 
   end
 
+  def show
+    @count = 1
+    @schedules = Schedule.where(subject_id: @subject.id)
+  end
+
   def create
     @error = ""
     @subject = Subject.new(subject_params)

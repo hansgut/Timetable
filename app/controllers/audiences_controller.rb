@@ -13,6 +13,11 @@ class AudiencesController < ApplicationController
 
   end
 
+  def show
+    @count = 1
+    @schedules = Schedule.where(audience_id: @audience.id)
+  end
+
   def create
     @error = ""
     @audience = Audience.new(audience_params)
