@@ -43,6 +43,12 @@ class TeachersController < ApplicationController
   end
 
   def destroy
+    schedules = Schedule.all
+    schedules.each do |e|
+      if e.teacher_id == @teacher.id
+        e.destroy
+      end
+    end
     @teacher.destroy
     redirect_to teachers_path
   end

@@ -43,6 +43,12 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
+    schedules = Schedule.all
+    schedules.each do |e|
+      if e.subject_id == @subject.id
+        e.destroy
+      end
+    end
     @subject.destroy
     redirect_to subjects_path
   end

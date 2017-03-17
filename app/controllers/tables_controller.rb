@@ -37,7 +37,6 @@ class TablesController < ApplicationController
   end
 
   def destroy
-
     @table.destroy
     redirect_to tables_path
   end

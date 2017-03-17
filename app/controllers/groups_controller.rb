@@ -43,6 +43,12 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    schedules = Schedule.all
+    schedules.each do |e|
+      if e.group_id == @group.id
+        e.destroy
+      end
+    end
     @table = Table.find_by group_id: @group.id
     if @table != nil
       @table.destroy

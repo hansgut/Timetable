@@ -43,6 +43,12 @@ class AudiencesController < ApplicationController
   end
 
   def destroy
+    schedules = Schedule.all
+    schedules.each do |e|
+      if e.audience_id == @audience.id
+        e.destroy
+      end
+    end
     @audience.destroy
     redirect_to audiences_path
   end
