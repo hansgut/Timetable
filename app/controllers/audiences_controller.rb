@@ -1,6 +1,6 @@
 class AudiencesController < ApplicationController
   before_action :find_audience, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @audiences = Audience.all.sort_by { |e| e.name  }
   end
